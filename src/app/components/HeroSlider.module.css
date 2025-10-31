@@ -1,0 +1,48 @@
+.heroSlider {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 0;
+  top: -4px; /* no gap between the nav & slides */
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slideImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slideOverlay {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  color: white;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+.slideOverlay h2 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.slideOverlay p {
+  font-size: 1.5rem;
+}
+
+.active {
+  opacity: 1;
+  z-index: 1;
+}
