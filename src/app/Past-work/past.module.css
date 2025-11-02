@@ -1,0 +1,233 @@
+.pastWork {
+  font-family: "Poppins", sans-serif;
+  background-color: #f7f9fb;
+  color: #333;
+  margin-top: 0px; /* Offset fixed navbar */
+}
+
+/* ===== Banner Section ===== */
+.banner {
+  background-image: url("/past.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 60vh; /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: -1px;
+}
+
+/* Dark overlay for better text contrast */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Main title */
+.title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #f1f1f1;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+/* ===== Features Section ===== */
+.featuresSection {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 3rem;
+  font-family: "Playfair Display", serif;
+}
+
+/* Grid for Feature Boxes */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  justify-items: center;
+}
+
+/* Each Feature Box */
+.featureBox {
+  max-width: 270px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.featureBox:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Feature Image */
+.featureImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid #c4a762;
+}
+
+/* Feature Title */
+.featureBox h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+/* Feature Description */
+.featureBox p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== Responsive Tweaks ===== */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .sectionTitle {
+    font-size: 1.7rem;
+  }
+
+  .featuresSection {
+    padding: 3rem 1.5rem;
+  }
+}
+
+/* ===== Gallery Section (Past Work Images) ===== */
+.workGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 3rem 2rem;
+  justify-items: center;
+  background-color: #fff;
+}
+
+.workCard {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.workImage {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== Explore Section (Slider) ===== */
+.exploreSection {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 4rem 2rem;
+}
+
+.exploreTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #333;
+   /* ✨ move the title slightly upward */
+  position: relative;
+  top: -50px;
+}
+
+/* Slider Container */
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Image Grid acts as the track */
+.imageGrid {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.workcard {
+  min-width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Nav Buttons */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.navButton:hover {
+  background: #c4a762;
+  color: #fff;
+}
+
+.navButton:first-of-type {
+  left: 15px;
+}
+
+.navButton:last-of-type {
+  right: 15px;
+}

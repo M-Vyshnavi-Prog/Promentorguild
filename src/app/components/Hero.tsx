@@ -1,29 +1,16 @@
-// src/app/components/Hero.tsx
 "use client";
-
-import Link from "next/link";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="h-screen bg-blue-100 flex flex-col justify-center items-center"
+      className="h-[60vh] bg-blue-100 flex flex-col justify-center items-center text-center px-4"
     >
-      <h1 className="text-5xl font-bold mb-4 text-center">
-        Welcome to ProMentorGuild
-      </h1>
-
-      <p className="text-xl mb-6 text-center max-w-xl">
+      <h1 className="text-4xl font-bold mb-4">Welcome to ProMentor Guild</h1>
+      <p className="text-lg mb-4">
         Professional guidance for Interior, Website, and App development.
       </p>
-
-      {/* ✅ Use Next.js Link for page navigation */}
-      <Link
-        href="/leadership"
-        className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
-      >
-        Learn More
-      </Link>
+      <p className="text-lg">Empowering professionals, researchers, and students.</p>
     </section>
   );
 }

@@ -1,0 +1,148 @@
+/* General Page Styling */
+.contactPage {
+  font-family: "Poppins", sans-serif;
+  background-color: #f7f9fb;
+  color: #333;
+}
+
+/* Banner Section */
+.banner {
+  background-image: url("/contact.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.55);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: white;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+/* Contact Section */
+.contactSection {
+  padding: 60px 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Left: Form */
+.formContainer {
+  flex: 1;
+  min-width: 320px;
+}
+
+.formContainer h2 {
+  border-bottom: 3px solid #4caf50;
+  display: inline-block;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+.form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+}
+
+.form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.form button:hover {
+  background-color: #43a047;
+}
+
+/* Right: Address */
+.addressContainer {
+  flex: 1;
+  min-width: 320px;
+   /* ✅ Proper spacing to move the whole block */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* keeps internal text left-aligned */
+  margin-left: 200px; /* moves the entire block right */
+  
+}
+
+.addressContainer h2 {
+  border-bottom: 3px solid #4caf50;
+  display: inline-block;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  margin-left: 0px;
+}
+
+.addressBlock {
+  margin-bottom: 20px;
+}
+
+.addressBlock h3 {
+  margin: 0;
+  color: #555;
+}
+
+.addressBlock p {
+  color: #777;
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .formContainer,
+  .addressContainer {
+    width: 100%;
+  }
+}

@@ -9,7 +9,7 @@
   left: 0;
   width: 100%;
   height: var(--navbar-height);
-  background-color: #b19d47ff;
+  background-color: rgb(56, 160, 173);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   display: flex;
@@ -201,3 +201,28 @@
 .sliderPadding {
   padding-top: var(--navbar-height);
 }
+/* 🔍 Search input styling */
+.searchInput {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* When active, show input smoothly */
+.navRight input.searchInput {
+  width: 160px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #38a0ad;
+  box-shadow: 0 0 4px rgba(56, 160, 173, 0.4);
+}
+

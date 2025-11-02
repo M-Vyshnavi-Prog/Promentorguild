@@ -30,6 +30,30 @@ export default function Navbar() {
   const [isResearchOpen, setIsResearchOpen] = useState(false);
   const [isStudentOpen, setIsStudentOpen] = useState(false);
 
+  // 🔍 Search feature states
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // 🔍 Handle search logic
+  const handleSearch = () => {
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return;
+
+    if (query.includes("home")) window.location.href = "/";
+    else if (query.includes("leadership")) window.location.href = "/leadership";
+    else if (query.includes("interior")) window.location.href = "/For-professionals/interior-design";
+    else if (query.includes("website")) window.location.href = "/For-professionals/website-design";
+    else if (query.includes("app")) window.location.href = "/For-professionals/app-development";
+    else if (query.includes("research")) window.location.href = "/For-researchers/technology-engineering";
+    else if (query.includes("student")) window.location.href = "/For-students/special-education";
+    else if (query.includes("past")) window.location.href = "/past-work";
+    else if (query.includes("contact")) window.location.href = "/Contact-Us";
+    else alert("Page not found!");
+
+    setIsSearchOpen(false);
+    setSearchQuery("");
+  };
+
   return (
     <>
       <nav className={styles.navbar}>
@@ -57,9 +81,9 @@ export default function Navbar() {
               isOpen={isProfessionalOpen}
               setIsOpen={setIsProfessionalOpen}
               items={[
-                { href: "/interior-design", label: "Interior Designing" },
-                { href: "/website-design", label: "Website Designing" },
-                { href: "/app-development", label: "App Development" },
+                { href: "/For-professionals/interior-design", label: "Interior Designing" },
+                { href: "/For-professionals/website-design", label: "Website Designing" },
+                { href: "/For-professionals/app-development", label: "App Development" },
               ]}
             />
             <Dropdown
@@ -67,9 +91,9 @@ export default function Navbar() {
               isOpen={isResearchOpen}
               setIsOpen={setIsResearchOpen}
               items={[
-                { href: "/technology-engineering", label: "Technology & Engineering" },
-                { href: "/technical-writing", label: "Technical Writing" },
-                { href: "/career-counseling", label: "Career Counseling" },
+                { href: "/For-researchers/technology-engineering", label: "Technology & Engineering" },
+                { href: "/For-researchers/technical-writing", label: "Technical Writing" },
+                { href: "/For-researchers/carrer-counselling", label: "Carrer Counselling" },
               ]}
             />
             <Dropdown
@@ -77,21 +101,39 @@ export default function Navbar() {
               isOpen={isStudentOpen}
               setIsOpen={setIsStudentOpen}
               items={[
-                { href: "/special-education", label: "Special Education" },
-                { href: "/comprehensive-finance", label: "Comprehensive Finance" },
-                { href: "/proof-reading", label: "Proof Reading" },
-                { href: "/school-subjects", label: "School Subjects" },
+                { href: "/For-students/special-education", label: "Special Education" },
+                { href: "/For-students/comprehensive-finance", label: "Comprehensive Finance" },
+                { href: "/For-students/proof-reading", label: "Proof Reading" },
+                { href: "/For-students/school-subjects", label: "School Subjects" },
               ]}
             />
-            <NavLink href="/past-work" label="Past Work" />
-            <NavLink href="/contact" label="Contact" />
+            <NavLink href="/Past-work" label="Past Work" />
+            <NavLink href="/Contact-Us" label="Contact Us" />
           </div>
 
           {/* Right Section - Search */}
           <div className={styles.navRight}>
-            <button className={styles.searchButton} aria-label="Search">
-              <Search size={22} color="black" />
-            </button>
+            {isSearchOpen ? (
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleSearch();
+                }}
+                className={styles.searchInput}
+                autoFocus
+              />
+            ) : (
+              <button
+                className={styles.searchButton}
+                aria-label="Search"
+                onClick={() => setIsSearchOpen(true)}
+              >
+                <Search size={22} color="black" />
+              </button>
+            )}
           </div>
         </div>
       </nav>
@@ -142,58 +184,6 @@ function Dropdown({
           ))}
         </div>
       )}
-    </div>
-  );
-}
-
-// HeroSlider Component
-function HeroSlider() {
-  const slides = [
-    {
-      id: 1,
-      image: "/slide1.jpg",
-      title: "Empower Your Skills",
-      subtitle: "Learn. Build. Grow with ProMentor Guild.",
-    },
-    {
-      id: 2,
-      image: "/slide2.jpg",
-      title: "Shape Your Future",
-      subtitle: "Discover opportunities across all domains.",
-    },
-    {
-      id: 3,
-      image: "/slide3.jpg",
-      title: "Innovate & Lead",
-      subtitle: "Join hands with mentors and professionals.",
-    },
-  ];
-
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
-
-  return (
-    <div className={styles.heroSlider}>
-      {slides.map((slide, index) => (
-        <div
-          key={slide.id}
-          className={`${styles.slide} ${index === current ? styles.active : ""}`}
-        >
-          <div className={styles.slideImageWrapper}>
-            <Image src={slide.image} alt={slide.title} fill style={{ objectFit: "contain" }} />
-            <div className={styles.slideOverlay}>
-              <h2>{slide.title}</h2>
-              <p>{slide.subtitle}</p>
-            </div>
-          </div>
-        </div>
-      ))}
     </div>
   );
 }

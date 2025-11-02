@@ -1,0 +1,225 @@
+/* ============================= */
+/* ✅ Hero Section (Top Banner)  */
+/* ============================= */
+.techPage {
+  background-image: url("/engeneering.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50vh; /* Half page height */
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: visible;
+
+  /* Offset the fixed navbar height */
+  margin-top: -10px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  z-index: 1;
+}
+
+/* Dark transparent overlay */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+/* ============================= */
+/* ✅ Training / Tools Section   */
+/* ============================= */
+.contentSection {
+  background-color: #fff; /* solid white to prevent background bleed */
+  color: #222;
+  text-align: left;
+  width: 90%;
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contentSection h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+.gridList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem 2rem;
+}
+
+.gridList p {
+  margin: 0;
+  padding: 0.4rem 0;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.gridList p:hover {
+  color: #d4a017;
+  transform: translateY(-2px);
+}
+
+/* ============================= */
+/* ✅ Services Section (No Images) */
+/* ============================= */
+.servicesSection {
+  background-color: #f9f9f9;
+  padding: 60px 20px 100px;
+  text-align: center;
+  color: #222;
+  margin-top: 0;
+  position: relative;
+  z-index: 3;
+
+  /* ✅ Center section content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.servicesSection h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+/* ✅ Updated grid and card styles for uniform size */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  justify-items: stretch;
+  align-items: stretch;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 0;
+  gap: 1.5rem;
+}
+
+.serviceCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  /* ✅ Make all cards same height and width */
+  display: flex;
+  flex-direction: column;
+  justify-content: 50px;
+  height: 100%;
+  width: 100%;
+  min-height: 380px;
+}
+
+.serviceCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.serviceCard h4 {
+  font-size: 1.3rem;
+  color: #003366;
+  margin-bottom: 2px;
+}
+
+.serviceCard p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* ============================= */
+/* ✅ New “Services with Lists” Styling (for top section) */
+/* ============================= */
+.serviceCard ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align: left;
+  color: #444;
+  margin: 0;
+  margin-top: 4px;
+}
+
+.serviceCard li {
+  margin: 6px 0;
+  line-height: 1.5;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.serviceCard li:hover {
+  color: #d4a017;
+  transform: translateX(4px);
+}
+
+/* ============================= */
+/* ✅ Solutions Section (aligned with Services) */
+/* ============================= */
+.solutionsSection {
+  background-color: #fff;
+  padding: 40px 20px;
+  margin-top: -80px; /* adjusted spacing to bring closer */
+  text-align: center;
+  color: #222;
+  position: relative;
+  z-index: 3;
+
+  /* ✅ Match layout with Services */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.solutionsSection h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+/* ✅ Keep same grid style for consistency */
+.solutionsSection .servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  justify-items: stretch;
+  align-items: stretch;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
