@@ -194,6 +194,14 @@
 .imageGrid {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  gap: 20px;
+  justify-content: center;
+}
+.imageWrapper {
+  flex: 0 0 48%; /*two images side by side*/
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .workcard {
@@ -213,7 +221,7 @@
   border: none;
   padding: 0.8rem 1.2rem;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 0.8rem;
   border-radius: 50%;
   transition: all 0.3s ease;
   z-index: 10;
@@ -231,3 +239,50 @@
 .navButton:last-of-type {
   right: 15px;
 }
+.selectionBox {
+  margin: 1.5rem auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+  display: flex;
+  justify-content: center;
+  margin-top: -30px;
+}
+
+.selectionBox::-webkit-scrollbar {
+  height: 6px;
+}
+.selectionBox::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 3px;
+}
+
+.selectionBox ul {
+  display: inline-flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selectionBox li {
+  font-weight: 500;
+  cursor: pointer;
+  color: #444;
+  transition: color 0.3s, border-bottom 0.3s;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.selectionBox li:hover {
+  color: #0c0c0c;
+  border-bottom: 2px solid #1a237e;
+}
+.activeCategory {
+  color: #3a3b44;
+  border-bottom: 2px solid #1a237e;
+  font-weight: 600;
+}
+

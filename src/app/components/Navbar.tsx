@@ -88,7 +88,7 @@ export default function Navbar() {
       <div className={styles.navContainer}>
         {/* Left Section */}
         <div className={styles.navLeft}>
-          <Link href="/">
+          <Link href="/" className={styles.brandlink}>
             <Image
               src="/logo.png"
               alt="ProMentorGuild Logo"
@@ -96,8 +96,8 @@ export default function Navbar() {
               height={80}
               className={styles.logo}
             />
-          </Link>
           <span className={styles.brand}>ProMentor Guild</span>
+           </Link>
         </div>
 
         {/* Center Section */}
