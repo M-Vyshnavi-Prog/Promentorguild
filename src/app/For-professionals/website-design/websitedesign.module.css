@@ -139,10 +139,9 @@
   /* ✅ Make all cards same height and width */
   display: flex;
   flex-direction: column;
-  justify-content: 50px;
   height: 100%;
   width: 100%;
-  min-height: 380px;
+/*  min-height: 380px;  */
 }
 
 .serviceCard:hover {

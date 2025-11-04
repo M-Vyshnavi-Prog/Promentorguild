@@ -91,7 +91,7 @@
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  min-height: 380px;
+/*  min-height: 380px;  */
 }
 
 .serviceCard:hover {
