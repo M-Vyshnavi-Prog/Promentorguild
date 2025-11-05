@@ -30,6 +30,7 @@ export default function Navbar() {
   const [isProfessionalOpen, setIsProfessionalOpen] = useState(false);
   const [isResearchOpen, setIsResearchOpen] = useState(false);
   const [isStudentOpen, setIsStudentOpen] = useState(false);
+  const [isPastWorkOpen, setIsPastWorkOpen] = useState(false); 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -138,8 +139,16 @@ export default function Navbar() {
               { href: "/For-students/school-subjects", label: "School Subjects" },
             ]}
           />
-
-          <NavLink href="/Past-work" label="Past Work" />
+          <Dropdown
+  title="Past Work"
+  isOpen={isPastWorkOpen}
+  setIsOpen={setIsPastWorkOpen}
+  items={[
+    { href: "/Past-work/interior-design", label: "Interior Design" },
+    { href: "/Past-work/engineering-technology", label: "Engineering & Technology" },
+  ]}
+/>
+          
         </div>
 
         {/* Right Section (Search) */}

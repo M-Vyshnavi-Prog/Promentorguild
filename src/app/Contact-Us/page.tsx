@@ -1,8 +1,33 @@
 "use client";
 
+import { useState } from "react";
 import styles from "./contact.module.css";
 
 export default function ContactPage() {
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    const formData = new FormData(e.target);
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (response.ok) {
+      setStatus("success");
+      e.target.reset();
+    } else {
+      setStatus("error");
+    }
+  };
+
   return (
     <div className={styles.contactPage}>
       {/* Banner Section */}
@@ -18,7 +43,10 @@ export default function ContactPage() {
           {/* Left: Email Form */}
           <div className={styles.formContainer}>
             <h2>Email Us</h2>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
+               {/* ✅ Add your Web3Forms Access Key */}
+              <input type="hidden" name="access_key" value="7d2e859f-16f8-4a6e-9f8c-9b6c95d34e89" />
+
               <label htmlFor="fname">First Name *</label>
               <input type="text" id="fname" name="fname" placeholder="Your first name" required />
 
@@ -32,27 +60,37 @@ export default function ContactPage() {
               <textarea id="message" name="message" rows={5} placeholder="Your message"></textarea>
 
               <button type="submit">Submit</button>
+
+              {/* Success or Error Message */}
+              {status === "sending" && <p style={{ color: "blue" }}>Sending...</p>}
+              {status === "success" && <p style={{ color: "green" }}>Message sent successfully!</p>}
+              {status === "error" && <p style={{ color: "red" }}>Oops! Something went wrong.</p>}
             </form>
           </div>
 
           {/* Right: Address */}
           <div className={styles.addressContainer}>
-            <h2>Address</h2>
+            <h2>Apply Here</h2>
 
             <div className={styles.addressBlock}>
-              <h3>USA Headquarters</h3>
+              <h3>Email Us</h3>
               <p>
-                300 Decker Dr., Suite 335,
-                <br /> Irving, TX 75062
+                <a href="mailto:promentorguild@gmail.com" className={styles.emailLink}>
+                  promentorguild@gmail.com
+                </a>
               </p>
-            </div>
-
-            <div className={styles.addressBlock}>
-              <h3>Regional Office</h3>
-              <p>
-                3540 W Sahara #E6-135,
-                <br /> Las Vegas, NV 89102
-              </p>
+              <p>"Reach us by just one click"</p>
+              <button
+                className={styles.formButton}
+                onClick={() =>
+                  window.open(
+                    "https://docs.google.com/forms/d/e/1FAIpQLSfvZVbr_YphfVQGGDJKeZiAmYFufp4EGxcadkmvZdAqyX-6-w/viewform",
+                    "_blank"
+                  )
+                }
+              >
+                Fill Out Form
+              </button>
             </div>
           </div>
         </div>

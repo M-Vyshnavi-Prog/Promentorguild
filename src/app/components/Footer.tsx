@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./Footer.module.css";
-import { FaInstagram, FaFacebookF, FaPinterestP, FaXTwitter } from "react-icons/fa6";
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -38,8 +38,8 @@ const Footer = () => {
           <h4>Connect With Us</h4>
           <div className={styles.socialIcons}>
             <a href="https://www.instagram.com/promentor_guild?igsh=aGtvZHFyYnE5Y3Vm" target="_blank"><FaInstagram /></a>
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaPinterestP /></a>
+            <a href="#z"><FaFacebookF /></a>
+            <a href="#"><FaLinkedinIn /></a>
             <a href="#"><FaXTwitter /></a>
           </div>
         </div>

@@ -61,9 +61,9 @@ export default function LeadershipPage() {
           </p>
 
           <p className={styles.name}>
-            Rajesh Kumar
+            Kalpana Putrevu
             <br />
-            Chief Technology Officer, ProMentor Guild
+            Co-Founder & CTO, ProMentor Guild
           </p>
         </div>
 

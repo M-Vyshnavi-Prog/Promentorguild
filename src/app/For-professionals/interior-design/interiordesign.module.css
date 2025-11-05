@@ -186,6 +186,21 @@
   color: #d4a017;
   transform: translateX(4px);
 }
+/* ✅ Make all images same size and centered */
+.serviceCard img {
+  width: 45px;      /* same size for all logos */
+  height: 45px;     /* keep square for consistency */
+  object-fit: contain;
+  margin-bottom: 1rem ;
+  display: inline-block;
+  /*border-radius: 50%;*/
+ /* border: 1px solid #2e2b2b ;*/
+  padding: 0.1px;                 /* spacing between image and border */
+  background-color: #fff;  
+        /* optional white background inside circle */
+  
+}
+
 
 /* ============================= */
 /* ✅ Solutions Section (aligned with Services) */

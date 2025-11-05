@@ -129,7 +129,43 @@
   color: #777;
   margin-top: 5px;
   line-height: 1.5;
+
 }
+
+.addressBlock p:nth-of-type(2) {
+  color: #141414; /* darker grey */
+  font-style: italic;
+  margin-top: 0;
+}
+
+.emailLink {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 3rem;
+  display: inline-block;
+}
+.emailLink:hover {
+  text-decoration: underline;
+}
+
+.formButton {
+  background-color: #4b4d58;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 0.8rem;
+}
+
+.formButton:hover {
+  background-color: #3b3d46;
+  transform: translateY(-2px);
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -145,4 +181,26 @@
   .addressContainer {
     width: 100%;
   }
+
+  /* Success and Error Messages */
+.statusMessage {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.statusSending {
+  color: #1e88e5; /* Blue */
+}
+
+.statusSuccess {
+  color: #2e7d32; /* Green */
+}
+
+.statusError {
+  color: #d32f2f; /* Red */
+}
+
 }
