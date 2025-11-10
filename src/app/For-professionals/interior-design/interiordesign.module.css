@@ -188,18 +188,19 @@
 }
 /* ✅ Make all images same size and centered */
 .serviceCard img {
-  width: 45px;      /* same size for all logos */
-  height: 45px;     /* keep square for consistency */
+  width: 35px;        /* smaller size */
+  height: 35px;       /* keep square ratio */
   object-fit: contain;
-  margin-bottom: 1rem ;
+  margin-bottom: 0.8rem;
   display: inline-block;
   /*border-radius: 50%;*/
- /* border: 1px solid #2e2b2b ;*/
-  padding: 0.1px;                 /* spacing between image and border */
-  background-color: #fff;  
-        /* optional white background inside circle */
-  
+  /*border: 1px solid #2e2b2b;*/
+  padding: 0.1px;
+  background-color: #fff;
+  margin-left: 80px;
+  transform: scale(1.3);  /* make them visually same size */
 }
+
 
 
 /* ============================= */

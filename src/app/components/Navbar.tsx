@@ -1,16 +1,17 @@
 "use client";
 
-import { useState, Dispatch, SetStateAction } from "react";
+import { useState, Dispatch, SetStateAction, MouseEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Search, X, ChevronDown } from "lucide-react";
+import { Search, X, ChevronDown, Menu } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 interface NavLinkProps {
   href: string;
   label: string;
   first?: boolean;
+  onClick?: (e: MouseEvent) => void;
 }
 
 interface DropdownItem {
@@ -24,19 +25,21 @@ interface DropdownProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   items: DropdownItem[];
   first?: boolean;
+  onItemClick?: () => void;
 }
 
 export default function Navbar() {
   const [isProfessionalOpen, setIsProfessionalOpen] = useState(false);
   const [isResearchOpen, setIsResearchOpen] = useState(false);
   const [isStudentOpen, setIsStudentOpen] = useState(false);
-  const [isPastWorkOpen, setIsPastWorkOpen] = useState(false); 
+  const [isPastWorkOpen, setIsPastWorkOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const router = useRouter();
 
-  // ✅ UPDATED SEARCH HANDLER
+  // Search handler (unchanged)
   const handleSearch = () => {
     const query = searchQuery.toLowerCase().trim();
     if (!query) return;
@@ -44,7 +47,7 @@ export default function Navbar() {
     if (query.includes("home")) router.push("/");
     else if (query.includes("leadership")) router.push("/leadership");
 
-    // 🔹 For Professionals
+    // For Professionals
     else if (
       query.includes("professional") ||
       query.includes("for professional") ||
@@ -55,7 +58,7 @@ export default function Navbar() {
     else if (query.includes("website")) router.push("/For-professionals/website-design");
     else if (query.includes("app")) router.push("/For-professionals/app-development");
 
-    // 🔹 For Research
+    // For Research
     else if (
       query.includes("research") ||
       query.includes("researcher") ||
@@ -65,7 +68,7 @@ export default function Navbar() {
     else if (query.includes("writing")) router.push("/For-researchers/technical-writing");
     else if (query.includes("counselling")) router.push("/For-researchers/carrer-counselling");
 
-    // 🔹 For Students
+    // For Students
     else if (
       query.includes("student") ||
       query.includes("students") ||
@@ -84,12 +87,15 @@ export default function Navbar() {
     setSearchQuery("");
   };
 
+  // Close the mobile menu after navigating
+  const closeMobile = () => setIsMobileMenuOpen(false);
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
-        {/* Left Section */}
+        {/* Left */}
         <div className={styles.navLeft}>
-          <Link href="/" className={styles.brandlink}>
+          <Link href="/" className={styles.brandlink} onClick={closeMobile}>
             <Image
               src="/logo.png"
               alt="ProMentorGuild Logo"
@@ -97,14 +103,28 @@ export default function Navbar() {
               height={80}
               className={styles.logo}
             />
-          <span className={styles.brand}>ProMentor Guild</span>
-           </Link>
+            <span className={styles.brand}>ProMentor Guild</span>
+          </Link>
+
+          {/* Hamburger (your CSS shows this only ≤768px) */}
+          <button
+            className={styles.hamburger}
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="pmg-main-nav"
+          >
+            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
         </div>
 
-        {/* Center Section */}
-        <div className={styles.navItems}>
-          <NavLink href="/" label="Home" first />
-          <NavLink href="/leadership" label="Leadership" />
+        {/* Center – desktop by default; mobile uses `.active` from your CSS */}
+        <div
+          id="pmg-main-nav"
+          className={`${styles.navItems} ${isMobileMenuOpen ? styles.active : ""}`}
+        >
+          <NavLink href="/" label="Home" first onClick={closeMobile} />
+          <NavLink href="/leadership" label="Leadership" onClick={closeMobile} />
 
           <Dropdown
             title="For Professionals"
@@ -115,6 +135,7 @@ export default function Navbar() {
               { href: "/For-professionals/website-design", label: "Website Designing" },
               { href: "/For-professionals/app-development", label: "App Development" },
             ]}
+            onItemClick={closeMobile}
           />
 
           <Dropdown
@@ -126,6 +147,7 @@ export default function Navbar() {
               { href: "/For-researchers/technical-writing", label: "Technical Writing" },
               { href: "/For-researchers/carrer-counselling", label: "Career Counselling" },
             ]}
+            onItemClick={closeMobile}
           />
 
           <Dropdown
@@ -138,24 +160,26 @@ export default function Navbar() {
               { href: "/For-students/proof-reading", label: "Proof Reading" },
               { href: "/For-students/school-subjects", label: "School Subjects" },
             ]}
+            onItemClick={closeMobile}
           />
+
           <Dropdown
-  title="Past Work"
-  isOpen={isPastWorkOpen}
-  setIsOpen={setIsPastWorkOpen}
-  items={[
-    { href: "/Past-work/interior-design", label: "Interior Design" },
-    { href: "/Past-work/engineering-technology", label: "Engineering & Technology" },
-  ]}
-/>
-          
+            title="Past Work"
+            isOpen={isPastWorkOpen}
+            setIsOpen={setIsPastWorkOpen}
+            items={[
+              { href: "/Past-work/interior-design", label: "Interior Design" },
+              { href: "/Past-work/engineering-technology", label: "Engineering & Technology" },
+            ]}
+            onItemClick={closeMobile}
+          />
         </div>
 
-        {/* Right Section (Search) */}
+        {/* Right (search) */}
         <div className={styles.navRight}>
           <div className={styles.searchWrapper}>
             {isSearchOpen && (
-              <div className={styles.searchBox}>
+              <>
                 <input
                   type="text"
                   placeholder="Search..."
@@ -175,7 +199,7 @@ export default function Navbar() {
                 >
                   <X size={18} color="black" />
                 </button>
-              </div>
+              </>
             )}
 
             <button
@@ -195,32 +219,55 @@ export default function Navbar() {
   );
 }
 
-/* ✅ NavLink Component */
-function NavLink({ href, label, first = false }: NavLinkProps) {
+/* ---------- NavLink ---------- */
+function NavLink({ href, label, first = false, onClick }: NavLinkProps) {
   return (
-    <Link href={href} className={`${styles.navItem} ${first ? styles.first : ""}`}>
+    <Link
+      href={href}
+      className={`${styles.navItem} ${first ? styles.first : ""}`}
+      onClick={onClick}
+    >
       {label}
     </Link>
   );
 }
 
-/* ✅ Dropdown Component */
-function Dropdown({ title, isOpen, setIsOpen, items, first = false }: DropdownProps) {
+/* ---------- Dropdown (tap + hover) ---------- */
+function Dropdown({
+  title,
+  isOpen,
+  setIsOpen,
+  items,
+  first = false,
+  onItemClick,
+}: DropdownProps) {
+  const id = `${title.replace(/\s+/g, "-").toLowerCase()}-menu`;
+
   return (
     <div
       className={`${styles.dropdown} ${first ? styles.first : ""}`}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <button className={styles.dropdownButton}>
+      <button
+        className={styles.dropdownButton}
+        onClick={() => setIsOpen((v) => !v)}   // tap to toggle (mobile)
+        aria-expanded={isOpen}
+        aria-controls={id}
+      >
         {title}
         <ChevronDown size={18} className={`${styles.chevron} ${isOpen ? styles.rotate : ""}`} />
       </button>
 
       {isOpen && (
-        <div className={styles.dropdownMenu}>
+        <div id={id} className={styles.dropdownMenu}>
           {items.map((item) => (
-            <Link key={item.href} href={item.href} className={styles.dropdownItem}>
+            <Link
+              key={item.href}
+              href={item.href}
+              className={styles.dropdownItem}
+              onClick={onItemClick}
+            >
               {item.label}
             </Link>
           ))}

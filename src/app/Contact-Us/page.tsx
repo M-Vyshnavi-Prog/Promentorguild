@@ -7,6 +7,7 @@ export default function ContactPage() {
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e: any) => {
+    console.log("Form submission initiated", e);
     e.preventDefault();
     setStatus("sending");
 

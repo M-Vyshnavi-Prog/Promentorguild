@@ -38,8 +38,8 @@ const Footer = () => {
           <h4>Connect With Us</h4>
           <div className={styles.socialIcons}>
             <a href="https://www.instagram.com/promentor_guild?igsh=aGtvZHFyYnE5Y3Vm" target="_blank"><FaInstagram /></a>
-            <a href="#z"><FaFacebookF /></a>
-            <a href="#"><FaLinkedinIn /></a>
+            <a href="#"><FaFacebookF /></a>
+            <a href="https://www.linkedin.com/in/promentor-guild-a8057b379?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"target="_blank"><FaLinkedinIn /></a>
             <a href="#"><FaXTwitter /></a>
           </div>
         </div>

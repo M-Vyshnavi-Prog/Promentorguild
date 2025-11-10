@@ -276,11 +276,12 @@
   flex-shrink: 0;
 }
 
-.selectionBox li:hover {
+.selectionBox li:hover, 
+.selectionBox li:active{
   color: #0c0c0c;
   border-bottom: 2px solid #1a237e;
 }
-.activeCategory {
+.selectionBox .activeCategory {
   color: #3a3b44;
   border-bottom: 2px solid #1a237e;
   font-weight: 600;

@@ -9,7 +9,7 @@
   left: 0;
   width: 100%;
   height: var(--navbar-height);
-  background-color: #F5F4F0;
+  background-color: #f5f4f0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   display: flex;
@@ -59,6 +59,7 @@
   font-weight: 700;
   color: #111;
 }
+
 .brandlink {
   display: flex;
   align-items: center;
@@ -133,7 +134,7 @@
   top: 100%;
   left: 50%;
   transform: translateX(-10%);
-  background: #F5F4F0;
+  background: #f5f4f0;
   border: 1px solid #ddd;
   border-radius: 6px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
@@ -168,7 +169,7 @@
 }
 
 .dropdownItem:hover {
-  background-color: #D8D5CF;
+  background-color: #d8d5cf;
 }
 
 /* Search button */
@@ -203,7 +204,8 @@
   top: 100%;
   right: -60px;
   margin-top: 8px;
-  padding: 6px 32px 6px 12px; /* extra space for cancel button */
+  padding: 6px 32px 6px 12px;
+  /* extra space for cancel button */
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 0.95rem;
@@ -234,23 +236,16 @@
 .cancelButton {
   position: absolute;
   top: calc(100% + 15px);
-  right: 20px;
-  transform: translateY(-50%);
+  right: -55px;
   background: none;
   border: none;
   color: #666;
-  font-size: 16px;
   cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
   transition: opacity 0.3s ease;
-  display: flex;
-  height: 1px;
 }
 
-/* Show cancel button when input is visible */
-.navRight input.searchInput:not([value=""]) + .cancelButton,
-.navRight input.searchInput:focus + .cancelButton {
+.navRight input.searchInput:not([value=""])+.cancelButton,
+.navRight input.searchInput:focus+.cancelButton {
   opacity: 1;
   pointer-events: auto;
 }
@@ -262,4 +257,132 @@
 /* Padding below navbar */
 .sliderPadding {
   padding-top: var(--navbar-height);
+}
+
+/* =======================================
+   📱 RESPONSIVENESS
+   ======================================= */
+
+/* Tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+  .navContainer {
+    padding: 0 16px;
+  }
+
+  .navItems {
+    margin-left: 20px;
+  }
+
+  .navItem {
+    font-size: 0.75rem;
+    margin-left: 20px;
+  }
+
+  .dropdown {
+    margin-left: 20px;
+  }
+
+  .searchButton {
+    margin-left: 30px;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    height: 65px;
+  }
+
+  .navContainer {
+    justify-content: space-between;
+  }
+
+  .brand {
+    font-size: 1.1rem;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Hide desktop nav links */
+  .navItems {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: var(--navbar-height);
+    left: 0;
+    width: 100%;
+    background-color: #f5f4f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 1rem 0;
+    gap: 12px;
+  }
+
+  /* Show when active */
+  .navItems.active {
+    display: flex;
+  }
+
+  .navItem {
+    margin: 8px 0;
+    font-size: 0.95rem;
+  }
+
+  /* Proper spacing between left and right */
+  .navLeft {
+    flex: 1;
+  }
+
+  .navRight {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Hamburger Menu */
+  .hamburger {
+    display: block;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #111;
+  }
+
+  .dropdownMenu {
+    position: static;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    opacity: 1;
+    visibility: visible;
+    padding: 0;
+  }
+
+  .dropdownItem {
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+/* Small Phones (≤ 480px) */
+@media (max-width: 480px) {
+  .brand {
+    font-size: 1rem;
+  }
+
+  .navContainer {
+    padding: 0 10px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navItem {
+    font-size: 0.9rem;
+  }
 }

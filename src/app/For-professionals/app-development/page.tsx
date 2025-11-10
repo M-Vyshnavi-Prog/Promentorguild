@@ -93,7 +93,7 @@ export default function AppDevelopment() {
           </div>
 
           <div className={styles.serviceCard}>
-            <img src="/support-icon.png" alt="Support" />
+            <img src="/supporting-icon.png" alt="Support" />
             <h4>Ongoing Support</h4>
             <p>
               Continuous monitoring, feature upgrades, and optimization to keep your app running smoothly.
