@@ -52,8 +52,11 @@
 .section p {
  color: #e6dfdf;
  font-size: 0.7rem;
-  margin-bottom: 3px;
+ margin-bottom: 8px;
 
+}
+.section p:last-of-type {
+  margin-top: 1rem; /* Extra space before © line */
 }
 .socialIcons {
   display: flex;

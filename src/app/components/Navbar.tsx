@@ -169,7 +169,7 @@ export default function Navbar() {
             setIsOpen={setIsPastWorkOpen}
             items={[
               { href: "/Past-work/interior-design", label: "Interior Design" },
-              { href: "/Past-work/engineering-technology", label: "Engineering & Technology" },
+              { href: "/Past-work/tech-engeneering", label: "Engineering & Technology" },
             ]}
             onItemClick={closeMobile}
           />

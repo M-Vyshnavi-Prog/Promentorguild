@@ -1,0 +1,228 @@
+/* =============== Banner Section =============== */
+.banner {
+  background-image: url("/engineeringtechnology.jpg"); /* from public folder */
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+/* Dark overlay for better text contrast */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Main title */
+.title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #f1f1f1;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 3rem;
+  font-family: "Playfair Display", serif;
+}
+
+
+
+/* ===== Responsive Tweaks ===== */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .sectionTitle {
+    font-size: 1.7rem;
+  }
+
+  .featuresSection {
+    padding: 3rem 1.5rem;
+  }
+}
+
+/* ===== Gallery Section (Past Work Images) ===== */
+.workGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 3rem 2rem;
+  justify-items: center;
+  background-color: #fff;
+}
+
+.workCard {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.workImage {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== Explore Section (Slider) ===== */
+.exploreSection {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 4rem 2rem;
+}
+
+.exploreTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #333;
+   /* ✨ move the title slightly upward */
+  position: relative;
+  top: -50px;
+}
+
+/* Slider Container */
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Image Grid acts as the track */
+.imageGrid {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 20px;
+  justify-content: center;
+}
+.imageWrapper {
+  flex: 0 0 48%; /*two images side by side*/
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.workcard {
+  min-width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Nav Buttons */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.navButton:hover {
+  background: #c4a762;
+  color: #fff;
+}
+
+.navButton:first-of-type {
+  left: 15px;
+}
+
+.navButton:last-of-type {
+  right: 15px;
+}
+.selectionBox {
+  margin: 1.5rem auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+  display: flex;
+  justify-content: center;
+  margin-top: -30px;
+}
+
+.selectionBox::-webkit-scrollbar {
+  height: 6px;
+}
+.selectionBox::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 3px;
+}
+
+.selectionBox ul {
+  display: inline-flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selectionBox li {
+  font-weight: 500;
+  cursor: pointer;
+  color: #444;
+  transition: color 0.3s, border-bottom 0.3s;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.selectionBox li:hover, 
+.selectionBox li:active{
+  color: #0c0c0c;
+  border-bottom: 2px solid #1a237e;
+}
+.selectionBox .activeCategory {
+  color: #3a3b44;
+  border-bottom: 2px solid #1a237e;
+  font-weight: 600;
+}
+
