@@ -1,9 +1,5 @@
-.pastWork {
-  font-family: "Poppins", sans-serif;
-  background-color: #f7f9fb;
-  color: #333;
-  margin-top: 0px; /* Offset fixed navbar */
-}
+/* Deprecated: styles migrated to styled-components in `styles.tsx` */
+.deprecated-note { display:none }
 
 /* ===== Banner Section ===== */
 .banner {

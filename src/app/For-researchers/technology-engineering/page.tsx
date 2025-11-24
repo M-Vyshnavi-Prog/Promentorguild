@@ -1,25 +1,25 @@
 // src/app/For-researchers/technology-engineering/page.tsx
-import styles from "./technology.module.css";
+import { HeroSection, Overlay, ServicesSection, ServicesGrid, ServiceCard, SolutionsSection } from "./styles";
 
 export default function TechnologyEngineering() {
   return (
     <>
-      <div className={styles["techPage"]}>
-        <div className={styles.overlay}>
+      <HeroSection>
+        <Overlay>
           <h1>Technology & Engineering</h1>
           <p>
             Advancing innovation through research, simulation, and hands-on
             training in modern engineering technologies and systems.
           </p>
-        </div>
-      </div>
+        </Overlay>
+      </HeroSection>
 
       {/* ✅ Services Section */}
-      <section className={styles.servicesSection}>
+      <ServicesSection>
         <h2>Services</h2>
-        <div className={styles.servicesGrid}>
+        <ServicesGrid>
           {/* Card 1 */}
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <h4>Embedded Systems Design</h4>
             <ul>
               <li>Microcontroller & ARM-based development</li>
@@ -27,10 +27,10 @@ export default function TechnologyEngineering() {
               <li>IoT system design and implementation</li>
               <li>Firmware optimization and testing</li>
             </ul>
-          </div>
+          </ServiceCard>
 
           {/* Card 2 */}
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <h4>Simulation & Modeling</h4>
             <ul>
               <li>MATLAB & Simulink based system modeling</li>
@@ -38,10 +38,10 @@ export default function TechnologyEngineering() {
               <li>EM field simulation using CST Microwave Studio</li>
               <li>Thermal & mechanical simulations</li>
             </ul>
-          </div>
+          </ServiceCard>
 
           {/* Card 3 */}
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <h4>Product Development</h4>
             <ul>
               <li>Prototype design and testing</li>
@@ -49,10 +49,10 @@ export default function TechnologyEngineering() {
               <li>Integration of hardware and software modules</li>
               <li>Performance evaluation and optimization</li>
             </ul>
-          </div>
+          </ServiceCard>
 
           {/* Card 4 */}
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <h4>Research & Innovation Support</h4>
             <ul>
               <li>Guidance for academic and industrial projects</li>
@@ -60,46 +60,46 @@ export default function TechnologyEngineering() {
               <li>Simulation-based learning modules</li>
               <li>Mentorship for research students</li>
             </ul>
-          </div>
-        </div>
-      </section>
+          </ServiceCard>
+        </ServicesGrid>
+      </ServicesSection>
 
       {/* ✅ Solutions Section */}
-      <section className={styles.solutionsSection}>
+      <SolutionsSection>
         <h2>Solutions</h2>
-        <div className={styles.servicesGrid}>
-          <div className={styles.serviceCard}>
+        <ServicesGrid>
+          <ServiceCard>
             <img src="/embedded-icon.png" alt="Embedded Systems" />
             <h4>Embedded Systems</h4>
             <p>
               From concept to code — building efficient embedded hardware and firmware solutions for real-world applications.
             </p>
-          </div>
+          </ServiceCard>
 
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <img src="/simulation-icon.png" alt="Simulation" />
             <h4>Simulation & Analysis</h4>
             <p>
               High-fidelity simulation using MATLAB, CST, and LTSpice to validate and enhance engineering designs.
             </p>
-          </div>
+          </ServiceCard>
 
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <img src="/ev-icon.png" alt="EV & Power Systems" />
             <h4>EV & Power Systems</h4>
             <p>
               Research and training in Electric Vehicles, Wireless Power Transfer, and smart energy systems.
             </p>
-          </div>
+          </ServiceCard>
 
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <img src="/innovation-icon.png" alt="Innovation Support" />
             <h4>Innovation Support</h4>
             <p>
               End-to-end support for engineering innovation, including simulation, prototyping, and academic collaboration.
             </p>
-          </div>
-        </div>
+          </ServiceCard>
+        </ServicesGrid>
          <p
           style={{
             textAlign: "center",
@@ -111,7 +111,7 @@ export default function TechnologyEngineering() {
           "Where technology meets innovation, turning concepts into creations that shape the future."
         </p>
 
-      </section>
+      </SolutionsSection>
     </>
   );
 }

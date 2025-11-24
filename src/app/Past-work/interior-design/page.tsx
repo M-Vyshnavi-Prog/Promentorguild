@@ -1,7 +1,27 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
-import styles from "./interior.module.css";
+import {
+  PastWorkSection,
+  Banner,
+  Overlay,
+  Title,
+  Subtitle,
+  FeaturesSection,
+  SectionTitle,
+  FeaturesGrid,
+  FeatureBox,
+  FeatureImage,
+  ExploreSection,
+  ExploreTitle,
+  SelectionBox,
+  SelectionList,
+  SelectionItem,
+  SliderContainer,
+  ImageGrid,
+  ImageWrapper,
+  NavButton,
+} from "../styles";
 
 import villa1 from "../../../asset/private/villa5000-1.jpg";
 import villa2 from "../../../asset/private/villa5000-2.jpg";
@@ -67,101 +87,88 @@ export default function PastWorkPage() {
   };
 
   return (
-    <section className={styles.pastWork}>
+    <PastWorkSection>
       {/* Banner Section */}
-      <div className={styles.banner}>
-        <div className={styles.overlay}>
-          <h1 className={styles.title}>Our Past Work</h1>
-          <p className={styles.subtitle}>Discover how our designs bring spaces to life</p>
-        </div>
-      </div>
+      <Banner>
+        <Overlay>
+          <Title>Our Past Work</Title>
+          <Subtitle>Discover how our designs bring spaces to life</Subtitle>
+        </Overlay>
+      </Banner>
 
       {/* Features Section */}
-      <div className={styles.featuresSection}>
-        <h2 className={styles.sectionTitle}>What Makes Our Work Stand Out</h2>
+      <FeaturesSection>
+        <SectionTitle>What Makes Our Work Stand Out</SectionTitle>
 
-        <div className={styles.featuresGrid}>
-          <div className={styles.featureBox}>
-            <img src="/detail.jpg" alt="Attention to Detail" className={styles.featureImage} />
+        <FeaturesGrid>
+          <FeatureBox>
+            <FeatureImage src="/detail.jpg" alt="Attention to Detail" />
             <h3>Attention to Detail</h3>
             <p>
               Every project is crafted with precision, ensuring beauty, balance,
               and harmony in every design.
             </p>
-          </div>
+          </FeatureBox>
 
-          <div className={styles.featureBox}>
-            <img src="/ideas.jpg" alt="Innovative Ideas" className={styles.featureImage} />
+          <FeatureBox>
+            <FeatureImage src="/ideas.jpg" alt="Innovative Ideas" />
             <h3>Innovative Ideas</h3>
             <p>
               We merge creativity and practicality to deliver unique and inspiring
               solutions.
             </p>
-          </div>
+          </FeatureBox>
 
-          <div className={styles.featureBox}>
-            <img src="/client.jpg" alt="Client-Centric Approach" className={styles.featureImage} />
+          <FeatureBox>
+            <FeatureImage src="/client.jpg" alt="Client-Centric Approach" />
             <h3>Client-Centric Approach</h3>
             <p>
               Your vision leads our process — we work closely with you from concept
               to creation.
             </p>
-          </div>
+          </FeatureBox>
 
-          <div className={styles.featureBox}>
-            <img src="/quality.jpg" alt="Premium Quality" className={styles.featureImage} />
+          <FeatureBox>
+            <FeatureImage src="/quality.jpg" alt="Premium Quality" />
             <h3>Premium Quality</h3>
             <p>
               From material selection to finishing touches, we maintain excellence
               at every step.
             </p>
-          </div>
-        </div>
-      </div>
+          </FeatureBox>
+        </FeaturesGrid>
+      </FeaturesSection>
 
       {/* Explore Section */}
-      <div className={styles.exploreSection}>
-        <h2 className={styles.exploreTitle}>
-          "Step Into the Spaces We’ve Redefined"
-        </h2>
+      <ExploreSection>
+        <ExploreTitle>"Step Into the Spaces We’ve Redefined"</ExploreTitle>
 
         {/* Category Selector */}
-        <div className={styles.selectionBox}>
-          <ul>
+        <SelectionBox>
+          <SelectionList>
             {categories.map((cat) => (
-              <li
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={selectedCategory === cat ? styles.activeCategory : ""}
-              >
+              <SelectionItem key={cat} onClick={() => setSelectedCategory(cat)} active={selectedCategory === cat}>
                 {cat}
-              </li>
+              </SelectionItem>
             ))}
-          </ul>
-        </div>
+          </SelectionList>
+        </SelectionBox>
 
         {/* Image Carousel */}
-        <div className={styles.sliderContainer}>
-          <button onClick={prevSlide} className={styles.navButton}>‹</button>
+        <SliderContainer>
+          <NavButton style={{ left: 15 }} onClick={prevSlide}>‹</NavButton>
 
-          <div className={styles.imageGrid}>
+          <ImageGrid>
             {getVisibleImages().map((src: StaticImageData, idx: number) => (
-              <div key={idx} className={styles.imageWrapper}>
-                <Image
-                  src={src}
-                  alt={`${selectedCategory} ${idx + 1}`}
-                  className={styles.workcard}
-                  width={600}
-                  height={400}
-                  priority
-                />
-              </div>
+              <ImageWrapper key={idx}>
+                <Image src={src} alt={`${selectedCategory} ${idx + 1}`} width={600} height={400} priority />
+              </ImageWrapper>
             ))}
-          </div>
+          </ImageGrid>
 
-          <button onClick={nextSlide} className={styles.navButton}>›</button>
-        </div>
-      </div>
-    </section>
+          <NavButton style={{ right: 15 }} onClick={nextSlide}>›</NavButton>
+        </SliderContainer>
+      </ExploreSection>
+    </PastWorkSection>
   );
 }

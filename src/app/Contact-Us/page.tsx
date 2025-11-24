@@ -1,13 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./contact.module.css";
+import {
+  Page,
+  Banner,
+  BannerOverlay,
+  Title,
+  ContactSection,
+  Container,
+  FormContainer,
+  FormTitle,
+  Form,
+  AddressContainer,
+  AddrTitle,
+  AddressBlock,
+  EmailLink,
+  FormButton,
+  StatusMessage,
+} from "./contactStyles";
 
 export default function ContactPage() {
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e: any) => {
-    console.log("Form submission initiated", e);
     e.preventDefault();
     setStatus("sending");
 
@@ -30,22 +45,18 @@ export default function ContactPage() {
   };
 
   return (
-    <div className={styles.contactPage}>
-      {/* Banner Section */}
-      <section className={styles.banner}>
-        <div className={styles.overlay}>
-          <h1 className={styles.title}>Contact Us</h1>
-        </div>
-      </section>
+    <Page>
+      <Banner>
+        <BannerOverlay>
+          <Title>Contact Us</Title>
+        </BannerOverlay>
+      </Banner>
 
-      {/* Contact Section */}
-      <section className={styles.contactSection}>
-        <div className={styles.container}>
-          {/* Left: Email Form */}
-          <div className={styles.formContainer}>
-            <h2>Email Us</h2>
-            <form className={styles.form} onSubmit={handleSubmit}>
-               {/* ✅ Add your Web3Forms Access Key */}
+      <ContactSection>
+        <Container>
+          <FormContainer>
+            <FormTitle>Email Us</FormTitle>
+            <Form onSubmit={handleSubmit}>
               <input type="hidden" name="access_key" value="7d2e859f-16f8-4a6e-9f8c-9b6c95d34e89" />
 
               <label htmlFor="fname">First Name *</label>
@@ -62,27 +73,21 @@ export default function ContactPage() {
 
               <button type="submit">Submit</button>
 
-              {/* Success or Error Message */}
-              {status === "sending" && <p style={{ color: "blue" }}>Sending...</p>}
-              {status === "success" && <p style={{ color: "green" }}>Message sent successfully!</p>}
-              {status === "error" && <p style={{ color: "red" }}>Oops! Something went wrong.</p>}
-            </form>
-          </div>
+              {status === "sending" && <StatusMessage style={{ color: "#1e88e5" }}>Sending...</StatusMessage>}
+              {status === "success" && <StatusMessage style={{ color: "#2e7d32" }}>Message sent successfully!</StatusMessage>}
+              {status === "error" && <StatusMessage style={{ color: "#d32f2f" }}>Oops! Something went wrong.</StatusMessage>}
+            </Form>
+          </FormContainer>
 
-          {/* Right: Address */}
-          <div className={styles.addressContainer}>
-            <h2>Apply Here</h2>
-
-            <div className={styles.addressBlock}>
+          <AddressContainer>
+            <AddrTitle>Apply Here</AddrTitle>
+            <AddressBlock>
               <h3>Email Us</h3>
               <p>
-                <a href="mailto:promentorguild@gmail.com" className={styles.emailLink}>
-                  promentorguild@gmail.com
-                </a>
+                <EmailLink href="mailto:promentorguild@gmail.com">promentorguild@gmail.com</EmailLink>
               </p>
               <p>"Reach us by just one click"</p>
-              <button
-                className={styles.formButton}
+              <FormButton
                 onClick={() =>
                   window.open(
                     "https://docs.google.com/forms/d/e/1FAIpQLSfvZVbr_YphfVQGGDJKeZiAmYFufp4EGxcadkmvZdAqyX-6-w/viewform",
@@ -91,11 +96,11 @@ export default function ContactPage() {
                 }
               >
                 Fill Out Form
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+              </FormButton>
+            </AddressBlock>
+          </AddressContainer>
+        </Container>
+      </ContactSection>
+    </Page>
   );
 }

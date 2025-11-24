@@ -1,25 +1,32 @@
 // src/app/interior-design/page.tsx
-import styles from "./interiordesign.module.css";
+import {
+  HeroSection,
+  Overlay,
+  ContentSection,
+  GridList,
+  ServicesSection,
+  ServicesGrid,
+  ServiceCard,
+  SolutionsSection,
+} from './styles';
 
 export default function InteriorDesign() {
   return (
     <>
-      <div className={styles["interior-page"]}>
-        <div className={styles.overlay}>
+      <HeroSection>
+        <Overlay>
           <h1>Architecture and Interior Design</h1>
           <p>
             We offer specialized training in industry-standard design tools and
             techniques for students, freelance designers, and firms.
           </p>
-        </div>
-      </div>
+        </Overlay>
+      </HeroSection>
 
-      {/* ✅ New “Services” section (Added Above Solutions) */}
-      <section className={styles.servicesSection}>
+      <ServicesSection>
         <h2>Services</h2>
-        <div className={styles.servicesGrid}>
-          {/* Card 1 */}
-          <div className={styles.serviceCard}>
+        <ServicesGrid>
+          <ServiceCard>
             <h4>Training &amp; Tools</h4>
             <ul>
               <li>SketchUp</li>
@@ -28,91 +35,85 @@ export default function InteriorDesign() {
               <li>Enscape</li>
               <li>V-Ray</li>
             </ul>
-          </div>
+          </ServiceCard>
 
-          {/* Card 2 */}
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <h4>Professional Services</h4>
             <ul>
               <li>3D Architectural Modeling</li>
               <li>Photorealistic Rendering</li>
               <li>Technical Drawing &amp; Layout Documentation</li>
             </ul>
-          </div>
+          </ServiceCard>
 
-          {/* Card 3 */}
-          <div className={styles.serviceCard}>
-            <h4>
-              3D Animation for Residential, Commercial &amp; Public Spaces
-            </h4>
+          <ServiceCard>
+            <h4>3D Animation for Residential, Commercial &amp; Public Spaces</h4>
             <ul>
               <li>Twin Motion</li>
             </ul>
-          </div>
+          </ServiceCard>
 
-          {/* Card 4 */}
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <h4>Adobe</h4>
             <ul>
               <li>Photoshop</li>
               <li>InDesign</li>
             </ul>
-          </div>
-        </div>
-      </section>
+          </ServiceCard>
+        </ServicesGrid>
+      </ServicesSection>
 
-      {/* ✅ Existing “Solution’s” Section (Unchanged) */}
-      <section className={styles.solutionsSection}>
+      <SolutionsSection>
         <h2>Solution's</h2>
-        <div className={styles.servicesGrid}>
-          <div className={styles.serviceCard}>
+        <ServicesGrid>
+          <ServiceCard>
             <img src="/design-icon.png" alt="Design" />
             <h4>Interior Design</h4>
             <p>
               Transform your spaces with innovative interior design solutions
               tailored to your needs and style.
             </p>
-          </div>
+          </ServiceCard>
 
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <img src="/architecture-icon.png" alt="Architecture" />
             <h4>Architecture</h4>
             <p>
               We provide modern and sustainable architectural designs that
               combine functionality and beauty.
             </p>
-          </div>
+          </ServiceCard>
 
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <img src="/visualization-icon.png" alt="3D Visualization" />
             <h4>3D Visualization</h4>
             <p>
               Bring your projects to life with high-quality 3D rendering and
               walkthrough animations.
             </p>
-          </div>
+          </ServiceCard>
 
-          <div className={styles.serviceCard}>
+          <ServiceCard>
             <img src="/consulting-icon.png" alt="Consulting" />
             <h4>Consulting</h4>
             <p>
               Get expert advice and guidance for architecture, planning, and
               design implementation.
             </p>
-          </div>
-        </div>
+          </ServiceCard>
+        </ServicesGrid>
 
         <p
           style={{
-            textAlign: "center",
-            marginTop: "2rem",
-            fontStyle: "italic",
-            color: "#1a237e",
+            textAlign: 'center',
+            marginTop: '2rem',
+            fontStyle: 'italic',
+            color: '#1a237e',
           }}
         >
           "Every room a reflection of you, every detail crafted with care — your dream home awaits."
         </p>
-      </section>
+      </SolutionsSection>
     </>
   );
 }

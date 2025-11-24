@@ -1,7 +1,22 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
-import styles from "./tech.module.css";
+import {
+  PastWorkSection,
+  Banner,
+  Overlay,
+  Title,
+  Subtitle,
+  ExploreSection,
+  ExploreTitle,
+  SelectionBox,
+  SelectionList,
+  SelectionItem,
+  SliderContainer,
+  ImageGrid,
+  ImageWrapper,
+  NavButton,
+} from "../styles";
 
 import simu1 from "../../../asset/private/simulation-1.png";
 import simu2 from "../../../asset/private/simulation-2.png";
@@ -47,57 +62,44 @@ export default function PastWorkPage() {
   };
 
   return (
-    <section className={styles.pastWork}>
+    <PastWorkSection>
       {/* Banner Section */}
-      <div className={styles.banner}>
-        <div className={styles.overlay}>
-          <h1 className={styles.title}>Our Past Work</h1>
-          <p className={styles.subtitle}>Showcasing our innovative work in technology and engineering excellence.</p>
-        </div>
-      </div>
+      <Banner>
+        <Overlay>
+          <Title>Our Past Work</Title>
+          <Subtitle>Showcasing our innovative work in technology and engineering excellence.</Subtitle>
+        </Overlay>
+      </Banner>
       {/* Explore Section */}
-      <div className={styles.exploreSection}>
-        <h2 className={styles.exploreTitle}>
-          "Dive into the World We Simulate, Before It’s Built"
-        </h2>
+      <ExploreSection>
+        <ExploreTitle>"Dive into the World We Simulate, Before It’s Built"</ExploreTitle>
 
         {/* Category Selector */}
-        <div className={styles.selectionBox}>
-          <ul>
+        <SelectionBox>
+          <SelectionList>
             {categories.map((cat) => (
-              <li
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={selectedCategory === cat ? styles.activeCategory : ""}
-              >
+              <SelectionItem key={cat} onClick={() => setSelectedCategory(cat)} active={selectedCategory === cat}>
                 {cat}
-              </li>
+              </SelectionItem>
             ))}
-          </ul>
-        </div>
+          </SelectionList>
+        </SelectionBox>
 
         {/* Image Carousel */}
-        <div className={styles.sliderContainer}>
-          <button onClick={prevSlide} className={styles.navButton}>‹</button>
+        <SliderContainer>
+          <NavButton style={{ left: 15 }} onClick={prevSlide}>‹</NavButton>
 
-          <div className={styles.imageGrid}>
+          <ImageGrid>
             {getVisibleImages().map((src: StaticImageData, idx: number) => (
-              <div key={idx} className={styles.imageWrapper}>
-                <Image
-                  src={src}
-                  alt={`${selectedCategory} ${idx + 1}`}
-                  className={styles.workcard}
-                  width={600}
-                  height={400}
-                  priority
-                />
-              </div>
+              <ImageWrapper key={idx}>
+                <Image src={src} alt={`${selectedCategory} ${idx + 1}`} width={600} height={400} priority />
+              </ImageWrapper>
             ))}
-          </div>
+          </ImageGrid>
 
-          <button onClick={nextSlide} className={styles.navButton}>›</button>
-        </div>
-      </div>
-    </section>
+          <NavButton style={{ right: 15 }} onClick={nextSlide}>›</NavButton>
+        </SliderContainer>
+      </ExploreSection>
+    </PastWorkSection>
   );
 }
