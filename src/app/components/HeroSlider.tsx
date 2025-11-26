@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from "./HeroSlider.module.css";
+import {
+  SliderContainer,
+  Slide,
+  SlideImageWrapper,
+  SlideOverlay,
+} from "../styles/homeStyles";
 
 export default function HeroSlider() {
   const slides = [
@@ -36,13 +41,10 @@ export default function HeroSlider() {
   }, [slides.length]);
 
   return (
-    <div className={styles.heroSlider}>
+    <SliderContainer>
       {slides.map((slide, index) => (
-        <div
-          key={slide.id}
-          className={`${styles.slide} ${index === current ? styles.active : ""}`}
-        >
-          <div className={styles.slideImageWrapper}>
+        <Slide key={slide.id} $active={index === current}>
+          <SlideImageWrapper>
             <Image
               src={slide.image}
               alt={slide.title}
@@ -50,13 +52,13 @@ export default function HeroSlider() {
               style={{ objectFit: "cover" }}
               priority
             />
-            <div className={styles.slideOverlay}>
+            <SlideOverlay>
               <h2>{slide.title}</h2>
               <p>{slide.subtitle}</p>
-            </div>
-          </div>
-        </div>
+            </SlideOverlay>
+          </SlideImageWrapper>
+        </Slide>
       ))}
-    </div>
+    </SliderContainer>
   );
 }
