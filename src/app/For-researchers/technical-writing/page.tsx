@@ -1,121 +1,87 @@
-// src/app/For-researchers/Technical-writing/page.tsx
-import { HeroSection, Overlay, ServicesSection, ServicesGrid, ServiceCard, SolutionsSection } from "./styles";
+import HeroWithOverlay from "../../components/HeroWithOverlay";
+import ServiceWithListGrid from "../../components/ServiceWithListGrid";
+import SolutionGrid from "../../components/SolutionGrid";
 
 export default function TechnicalWriting() {
+  const services = [
+    {
+      title: "Research Paper Writing & Formatting",
+      items: [
+        "Manuscript structuring and proofreading",
+        "Formatting as per journal and conference standards",
+        "Reference styling (IEEE, APA, Springer, etc.)",
+        "Plagiarism check and content enhancement",
+      ],
+    },
+    {
+      title: "Technical Reports & Proposals",
+      items: [
+        "Creation of detailed project reports (DPR)",
+        "Funding proposal preparation (DST, SERB, etc.)",
+        "Industrial documentation and progress reports",
+        "Executive summaries and presentation writing",
+      ],
+    },
+    {
+      title: "Visual & Figure Generation",
+      items: [
+        "Scientific illustrations using SketchUp & MATLAB",
+        "Flowcharts, block diagrams, and schematics",
+        "High-resolution figures for publication",
+        "Data visualization and infographics",
+      ],
+    },
+    {
+      title: "Editing & Review Support",
+      items: [
+        "Peer-review assistance and manuscript polishing",
+        "Language editing and grammar correction",
+        "Consistency and compliance check",
+        "Final proof editing for submission",
+      ],
+    },
+  ];
+
+  const solutions = [
+    {
+      icon: "/writing-icon.png",
+      title: "Writing Tools",
+      description:
+        "Expert support using LaTeX, MS Word, PowerPoint, and SketchUp for technical writing and publication-ready outputs.",
+    },
+    {
+      icon: "/research-icon.png",
+      title: "Research Communication",
+      description:
+        "Helping scholars convey complex ideas effectively through clear, concise, and impactful documentation.",
+    },
+    {
+      icon: "/formatting-icon.png",
+      title: "Formatting & Compliance",
+      description:
+        "Ensuring all documents meet journal and institutional requirements for structure, style, and formatting.",
+    },
+    {
+      icon: "/review-icon.png",
+      title: "Peer Review & Editing",
+      description:
+        "Comprehensive review and refinement services to improve the technical clarity and publication readiness of your work.",
+    },
+  ];
+
   return (
     <>
-      <HeroSection>
-        <Overlay>
-          <h1>Technical Writing & Documentation</h1>
-          <p>
-            Empowering researchers and professionals to present their work
-            clearly, precisely, and effectively through world-class documentation
-            and visual communication.
-          </p>
-        </Overlay>
-      </HeroSection>
-
-      {/* ✅ Services Section */}
-      <ServicesSection>
-        <h2>Services</h2>
-        <ServicesGrid>
-          {/* Card 1 */}
-          <ServiceCard>
-            <h4>Research Paper Writing & Formatting</h4>
-            <ul>
-              <li>Manuscript structuring and proofreading</li>
-              <li>Formatting as per journal and conference standards</li>
-              <li>Reference styling (IEEE, APA, Springer, etc.)</li>
-              <li>Plagiarism check and content enhancement</li>
-            </ul>
-          </ServiceCard>
-
-          {/* Card 2 */}
-          <ServiceCard>
-            <h4>Technical Reports & Proposals</h4>
-            <ul>
-              <li>Creation of detailed project reports (DPR)</li>
-              <li>Funding proposal preparation (DST, SERB, etc.)</li>
-              <li>Industrial documentation and progress reports</li>
-              <li>Executive summaries and presentation writing</li>
-            </ul>
-          </ServiceCard>
-
-          {/* Card 3 */}
-          <ServiceCard>
-            <h4>Visual & Figure Generation</h4>
-            <ul>
-              <li>Scientific illustrations using SketchUp & MATLAB</li>
-              <li>Flowcharts, block diagrams, and schematics</li>
-              <li>High-resolution figures for publication</li>
-              <li>Data visualization and infographics</li>
-            </ul>
-          </ServiceCard>
-
-          {/* Card 4 */}
-          <ServiceCard>
-            <h4>Editing & Review Support</h4>
-            <ul>
-              <li>Peer-review assistance and manuscript polishing</li>
-              <li>Language editing and grammar correction</li>
-              <li>Consistency and compliance check</li>
-              <li>Final proof editing for submission</li>
-            </ul>
-          </ServiceCard>
-        </ServicesGrid>
-      </ServicesSection>
-
-      {/* ✅ Solutions Section */}
-      <SolutionsSection>
-        <h2>Solutions</h2>
-        <ServicesGrid>
-          <ServiceCard>
-            <img src="/writing-icon.png" />
-            <h4>Writing Tools</h4>
-            <p>
-              Expert support using LaTeX, MS Word, PowerPoint, and SketchUp for
-              technical writing and publication-ready outputs.
-            </p>
-          </ServiceCard>
-
-          <ServiceCard>
-            <img src="/research-icon.png" alt="Research Support" />
-            <h4>Research Communication</h4>
-            <p>
-              Helping scholars convey complex ideas effectively through clear,
-              concise, and impactful documentation.
-            </p>
-          </ServiceCard>
-
-          <ServiceCard>
-            <img src="/formatting-icon.png" alt="Formatting" />
-            <h4>Formatting & Compliance</h4>
-            <p>
-              Ensuring all documents meet journal and institutional
-              requirements for structure, style, and formatting.
-            </p>
-          </ServiceCard>
-
-          <ServiceCard>
-            <img src="/review-icon.png" alt="Peer Review" />
-            <h4>Peer Review & Editing</h4>
-            <p>
-              Comprehensive review and refinement services to improve the
-              technical clarity and publication readiness of your work.
-            </p>
-          </ServiceCard>
-        </ServicesGrid>
-        <p
-          style={{
-            textAlign: "center",
-            marginTop: "2rem",
-            fontStyle: "italic",
-            color: "#1a237e",
-          }}
-        >
-          "Where technology finds its voice — translating complexity into clarity"
-        </p>
-      </SolutionsSection>
+      <HeroWithOverlay
+        title="Technical Writing & Documentation"
+        subtitle="Empowering researchers and professionals to present their work clearly, precisely, and effectively through world-class documentation and visual communication."
+        bg="/technical.jpg"
+      />
+      <ServiceWithListGrid sectionTitle="Services" services={services} />
+      <SolutionGrid
+        sectionTitle="Solutions"
+        items={solutions}
+        quote="Where technology finds its voice — translating complexity into clarity"
+      />
     </>
   );
 }

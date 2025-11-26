@@ -6,32 +6,6 @@ export const Page = styled.div`
   color: #333;
 `;
 
-export const Banner = styled.section`
-  background-image: url("/contact.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 50vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
-
-export const BannerOverlay = styled.div`
-  background-color: rgba(0, 0, 0, 0.55);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Title = styled.h1`
-  color: white;
-  font-size: 3rem;
-  font-weight: 600;
-`;
-
 export const ContactSection = styled.section`
   padding: 60px 10%;
   display: flex;

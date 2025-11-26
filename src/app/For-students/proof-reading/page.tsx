@@ -1,115 +1,87 @@
-import { HeroSection, Overlay, ServicesSection, ServicesGrid, ServiceCard, SolutionsSection } from "./styles";
+import HeroWithOverlay from "../../components/HeroWithOverlay";
+import ServiceWithListGrid from "../../components/ServiceWithListGrid";
+import SolutionGrid from "../../components/SolutionGrid";
 
 export default function ProofReading() {
+  const services = [
+    {
+      title: "Grammar and Spelling Checks",
+      items: [
+        "Accurate correction of grammatical, spelling, and typographical errors",
+        "Ensures clarity and correctness across all content types",
+        "Enhances language fluency and overall readability",
+        "Consistency checks for style, tone, and terminology",
+      ],
+    },
+    {
+      title: "Structural Editing",
+      items: [
+        "Organization and flow improvement",
+        "Logical progression of ideas",
+        "Paragraph restructuring for clarity",
+        "Elimination of redundant or awkward phrasing",
+      ],
+    },
+    {
+      title: "Language Enhancement",
+      items: [
+        "Vocabulary optimization and enrichment",
+        "Sentence variation and complexity improvement",
+        "Tense and voice consistency",
+        "Professional and academic tone refinement",
+      ],
+    },
+    {
+      title: "Format & Citation",
+      items: [
+        "APA, MLA, Chicago, and Harvard style compliance",
+        "Proper formatting of references and citations",
+        "Bibliography organization",
+        "Document layout and presentation enhancement",
+      ],
+    },
+  ];
+
+  const solutions = [
+    {
+      icon: "/student-icon.png",
+      title: "Student Assignments",
+      description:
+        "Perfect essays, reports, and theses with polished writing and improved grades.",
+    },
+    {
+      icon: "/research-icon.png",
+      title: "Research Papers",
+      description:
+        "Professional proofreading for academic rigor, clarity, and publication-ready quality.",
+    },
+    {
+      icon: "/professional-icon.png",
+      title: "Professional Documents",
+      description:
+        "Business reports, emails, and content that convey professionalism and authority.",
+    },
+    {
+      icon: "/content-icon.png",
+      title: "Creative Content",
+      description:
+        "Blog posts, articles, and creative writing polished to engage and impress readers.",
+    },
+  ];
+
   return (
     <>
-      <HeroSection bg="/reading.jpg">
-        <Overlay>
-          <h1>Proof Reading</h1>
-          <p>
-            We offer expert proofreading and language enhancement services in both
-            English and Hindi — designed for students, researchers, professionals,
-            and content creators to refine and perfect their written communication.
-          </p>
-        </Overlay>
-      </HeroSection>
-
-      <ServicesSection>
-        <h2>Our Services Include</h2>
-        <ServicesGrid>
-          <ServiceCard>
-            <h4>Grammar and Spelling Checks</h4>
-            <ul>
-              <li>Accurate correction of grammatical, spelling, and typographical errors</li>
-              <li>Ensures clarity and correctness across all content types</li>
-              <li>Enhances language fluency and overall readability</li>
-              <li>Tailored corrections for both academic and professional writing</li>
-            </ul>
-          </ServiceCard>
-
-          <ServiceCard>
-            <h4>Sentence Structure & Style Suggestions</h4>
-            <ul>
-              <li>Improvement of sentence flow and logical organization</li>
-              <li>Polishing writing tone for formal or creative contexts</li>
-              <li>Rephrasing complex or ambiguous sentences for clarity</li>
-              <li>Ensuring consistent formatting and professional presentation</li>
-            </ul>
-          </ServiceCard>
-
-          <ServiceCard>
-            <h4>Content & Plagiarism Review</h4>
-            <ul>
-              <li>Comprehensive plagiarism checks with detailed similarity reports</li>
-              <li>Suggestions for originality and authentic expression</li>
-              <li>Improvement in structure, coherence, and content accuracy</li>
-              <li>Confidential and ethical document handling</li>
-            </ul>
-          </ServiceCard>
-
-          <ServiceCard>
-            <h4>Reference & Citation Validation</h4>
-            <ul>
-              <li>Checking citations and references (APA, MLA, IEEE, etc.)</li>
-              <li>Ensuring proper formatting and in-text citation consistency</li>
-              <li>Cross-verification of sources and bibliographic details</li>
-              <li>Support for academic and research document submissions</li>
-            </ul>
-          </ServiceCard>
-        </ServicesGrid>
-      </ServicesSection>
-
-      <SolutionsSection>
-        <h2>Our Specialized Support</h2>
-        <ServicesGrid>
-          <ServiceCard>
-            <img src="/learning-plan-icon.png" alt="Language Polishing" />
-            <h4>Language Polishing Sessions</h4>
-            <p>
-              One-on-one proofreading and editing sessions to refine vocabulary,
-              tone, and structure — ideal for theses, articles, and creative works.
-            </p>
-          </ServiceCard>
-
-          <ServiceCard>
-            <img src="/emotional-support-icon.png" alt="Editing Guidance" />
-            <h4>Expert Editorial Guidance</h4>
-            <p>
-              Personalized feedback from experienced editors to enhance clarity,
-              professionalism, and logical flow in your writing.
-            </p>
-          </ServiceCard>
-
-          <ServiceCard>
-            <img src="/skill-development-icon.png" alt="Academic Editing" />
-            <h4>Academic & Research Editing</h4>
-            <p>
-              Specialized in refining dissertations, journals, and project reports —
-              ensuring academic accuracy and linguistic precision.
-            </p>
-          </ServiceCard>
-
-          <ServiceCard>
-            <img src="/parent-training-icon.png" alt="Publication Support" />
-            <h4>Publication & Submission Support</h4>
-            <p>
-              Helping students and professionals format, finalize, and polish their
-              work for journals, publishers, and academic institutions.
-            </p>
-          </ServiceCard>
-        </ServicesGrid>
-
-        <p
-          style={{
-            textAlign: "center",
-            marginTop: "2rem",
-            fontStyle: "italic",
-            color: "#1a237e",
-          }}
-        >
-          "Great writing isn’t just about ideas — it’s about clarity, precision, and perfection."
-        </p>
-      </SolutionsSection>
+      <HeroWithOverlay
+        title="Proof Reading"
+        subtitle="We offer expert proofreading and language enhancement services in both English and Hindi — designed for students, researchers, professionals, and content creators to refine and perfect their written communication."
+        bg="/reading.jpg"
+      />
+      <ServiceWithListGrid sectionTitle="Our Services Include" services={services} />
+      <SolutionGrid
+        sectionTitle="Who We Help"
+        items={solutions}
+        quote="Perfect writing opens doors—let us help you make every word count."
+      />
     </>
   );
 }

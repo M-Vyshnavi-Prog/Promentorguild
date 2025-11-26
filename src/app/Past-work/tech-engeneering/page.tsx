@@ -1,12 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
+import HeroWithOverlay from "../../components/HeroWithOverlay";
 import {
   PastWorkSection,
-  Banner,
-  Overlay,
-  Title,
-  Subtitle,
   ExploreSection,
   ExploreTitle,
   SelectionBox,
@@ -16,7 +13,7 @@ import {
   ImageGrid,
   ImageWrapper,
   NavButton,
-} from "../styles";
+} from "../../styles/commonStyles";
 
 import simu1 from "../../../asset/private/simulation-1.png";
 import simu2 from "../../../asset/private/simulation-2.png";
@@ -63,13 +60,11 @@ export default function PastWorkPage() {
 
   return (
     <PastWorkSection>
-      {/* Banner Section */}
-      <Banner>
-        <Overlay>
-          <Title>Our Past Work</Title>
-          <Subtitle>Showcasing our innovative work in technology and engineering excellence.</Subtitle>
-        </Overlay>
-      </Banner>
+      <HeroWithOverlay
+        title="Our Past Work"
+        subtitle="Showcasing our innovative work in technology and engineering excellence."
+        bg="/tech-pastwork-bg.jpg"
+      />
       {/* Explore Section */}
       <ExploreSection>
         <ExploreTitle>"Dive into the World We Simulate, Before It’s Built"</ExploreTitle>
@@ -78,7 +73,7 @@ export default function PastWorkPage() {
         <SelectionBox>
           <SelectionList>
             {categories.map((cat) => (
-              <SelectionItem key={cat} onClick={() => setSelectedCategory(cat)} active={selectedCategory === cat}>
+              <SelectionItem key={cat} onClick={() => setSelectedCategory(cat)} $active={selectedCategory === cat}>
                 {cat}
               </SelectionItem>
             ))}

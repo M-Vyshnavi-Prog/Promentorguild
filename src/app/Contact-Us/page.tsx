@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import HeroWithOverlay from "../components/HeroWithOverlay";
 import {
   Page,
-  Banner,
-  BannerOverlay,
-  Title,
   ContactSection,
   Container,
   FormContainer,
@@ -46,11 +44,11 @@ export default function ContactPage() {
 
   return (
     <Page>
-      <Banner>
-        <BannerOverlay>
-          <Title>Contact Us</Title>
-        </BannerOverlay>
-      </Banner>
+      <HeroWithOverlay
+        title="Contact Us"
+        subtitle="Get in touch with us for any inquiries or assistance"
+        bg="/contact-bg.jpg"
+      />
 
       <ContactSection>
         <Container>
