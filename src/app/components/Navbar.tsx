@@ -1,17 +1,36 @@
 "use client";
 
-import { useState, Dispatch, SetStateAction, MouseEvent } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { Search, X, ChevronDown, Menu } from "lucide-react";
-import styles from "./Navbar.module.css";
+import {
+  Nav,
+  NavContainer,
+  NavLeft,
+  NavRight,
+  BrandLink,
+  Logo,
+  BrandText,
+  HamburgerButton,
+  NavItems,
+  NavLink,
+  DropdownContainer,
+  DropdownButton,
+  ChevronIcon,
+  DropdownMenu,
+  DropdownItem,
+  SearchWrapper,
+  SearchButton,
+  SearchInput,
+  CancelButton,
+} from "./NavbarStyles";
 
-interface NavLinkProps {
+interface NavLinkComponentProps {
   href: string;
   label: string;
   first?: boolean;
-  onClick?: (e: MouseEvent) => void;
+  onClick?: () => void;
 }
 
 interface DropdownItem {
@@ -38,6 +57,29 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const router = useRouter();
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
+  // Close all dropdowns when mobile menu closes
+  const closeMobile = () => {
+    setIsMobileMenuOpen(false);
+    setIsProfessionalOpen(false);
+    setIsResearchOpen(false);
+    setIsStudentOpen(false);
+    setIsPastWorkOpen(false);
+  };
 
   // Search handler (unchanged)
   const handleSearch = () => {
@@ -87,44 +129,19 @@ export default function Navbar() {
     setSearchQuery("");
   };
 
-  // Close the mobile menu after navigating
-  const closeMobile = () => setIsMobileMenuOpen(false);
-
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.navContainer}>
-        {/* Left */}
-        <div className={styles.navLeft}>
-          <Link href="/" className={styles.brandlink} onClick={closeMobile}>
-            <Image
-              src="/logo.png"
-              alt="ProMentorGuild Logo"
-              width={80}
-              height={80}
-              className={styles.logo}
-            />
-            <span className={styles.brand}>ProMentor Guild</span>
-          </Link>
+    <Nav>
+      <NavContainer>
+        <NavLeft>
+          <BrandLink as={Link} href="/" onClick={closeMobile}>
+            <Logo src="/logo.png" alt="ProMentorGuild Logo" />
+            <BrandText>ProMentor Guild</BrandText>
+          </BrandLink>
+        </NavLeft>
 
-          {/* Hamburger (your CSS shows this only ≤768px) */}
-          <button
-            className={styles.hamburger}
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            aria-label="Toggle menu"
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="pmg-main-nav"
-          >
-            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
-        </div>
-
-        {/* Center – desktop by default; mobile uses `.active` from your CSS */}
-        <div
-          id="pmg-main-nav"
-          className={`${styles.navItems} ${isMobileMenuOpen ? styles.active : ""}`}
-        >
-          <NavLink href="/" label="Home" first onClick={closeMobile} />
-          <NavLink href="/leadership" label="Leadership" onClick={closeMobile} />
+        <NavItems id="pmg-main-nav" $isOpen={isMobileMenuOpen}>
+          <NavLinkComponent href="/" label="Home" first onClick={closeMobile} />
+          <NavLinkComponent href="/leadership" label="Leadership" onClick={closeMobile} />
 
           <Dropdown
             title="For Professionals"
@@ -173,24 +190,30 @@ export default function Navbar() {
             ]}
             onItemClick={closeMobile}
           />
-        </div>
+        </NavItems>
 
-        {/* Right (search) */}
-        <div className={styles.navRight}>
-          <div className={styles.searchWrapper}>
+        <NavRight>
+          <HamburgerButton
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="pmg-main-nav"
+          >
+            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+          </HamburgerButton>
+
+          <SearchWrapper>
             {isSearchOpen && (
               <>
-                <input
+                <SearchInput
                   type="text"
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                  className={styles.searchInput}
                   autoFocus
                 />
-                <button
-                  className={styles.cancelButton}
+                <CancelButton
                   onClick={() => {
                     setIsSearchOpen(false);
                     setSearchQuery("");
@@ -198,12 +221,11 @@ export default function Navbar() {
                   aria-label="Cancel search"
                 >
                   <X size={18} color="black" />
-                </button>
+                </CancelButton>
               </>
             )}
 
-            <button
-              className={styles.searchButton}
+            <SearchButton
               onClick={() => {
                 if (isSearchOpen && searchQuery.trim()) handleSearch();
                 else setIsSearchOpen((prev) => !prev);
@@ -211,24 +233,20 @@ export default function Navbar() {
               aria-label="Search"
             >
               <Search size={20} color="black" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
+            </SearchButton>
+          </SearchWrapper>
+        </NavRight>
+      </NavContainer>
+    </Nav>
   );
 }
 
-/* ---------- NavLink ---------- */
-function NavLink({ href, label, first = false, onClick }: NavLinkProps) {
+/* ---------- NavLinkComponent ---------- */
+function NavLinkComponent({ href, label, first = false, onClick }: NavLinkComponentProps) {
   return (
-    <Link
-      href={href}
-      className={`${styles.navItem} ${first ? styles.first : ""}`}
-      onClick={onClick}
-    >
+    <NavLink as={Link} href={href} $first={first} onClick={onClick}>
       {label}
-    </Link>
+    </NavLink>
   );
 }
 
@@ -243,36 +261,50 @@ function Dropdown({
 }: DropdownProps) {
   const id = `${title.replace(/\s+/g, "-").toLowerCase()}-menu`;
 
+  // Check if we're on mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsOpen(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <div
-      className={`${styles.dropdown} ${first ? styles.first : ""}`}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+    <DropdownContainer
+      $first={first}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <button
-        className={styles.dropdownButton}
-        onClick={() => setIsOpen((v) => !v)}   // tap to toggle (mobile)
+      <DropdownButton
+        onClick={() => setIsOpen((v) => !v)}
         aria-expanded={isOpen}
         aria-controls={id}
       >
         {title}
-        <ChevronDown size={18} className={`${styles.chevron} ${isOpen ? styles.rotate : ""}`} />
-      </button>
+        <ChevronIcon $isOpen={isOpen}>
+          <ChevronDown size={18} />
+        </ChevronIcon>
+      </DropdownButton>
 
-      {isOpen && (
-        <div id={id} className={styles.dropdownMenu}>
-          {items.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={styles.dropdownItem}
-              onClick={onItemClick}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
+      <DropdownMenu id={id} $isOpen={isOpen}>
+        {items.map((item) => (
+          <DropdownItem
+            key={item.href}
+            as={Link}
+            href={item.href}
+            onClick={onItemClick}
+          >
+            {item.label}
+          </DropdownItem>
+        ))}
+      </DropdownMenu>
+    </DropdownContainer>
   );
 }
