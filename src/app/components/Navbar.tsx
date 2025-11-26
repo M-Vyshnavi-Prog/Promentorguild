@@ -4,6 +4,7 @@ import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Search, X, ChevronDown, Menu } from "lucide-react";
+import { searchPages } from "../config/searchConfig";
 import {
   Nav,
   NavContainer,
@@ -81,52 +82,22 @@ export default function Navbar() {
     setIsPastWorkOpen(false);
   };
 
-  // Search handler (unchanged)
+  // Search handler
   const handleSearch = () => {
-    const query = searchQuery.toLowerCase().trim();
+    const query = searchQuery.trim();
     if (!query) return;
 
-    if (query.includes("home")) router.push("/");
-    else if (query.includes("leadership")) router.push("/leadership");
+    // Use the centralized search function
+    const results = searchPages(query);
 
-    // For Professionals
-    else if (
-      query.includes("professional") ||
-      query.includes("for professional") ||
-      query.includes("for professionals")
-    )
-      router.push("/For-professionals/interior-design");
-    else if (query.includes("interior")) router.push("/For-professionals/interior-design");
-    else if (query.includes("website")) router.push("/For-professionals/website-design");
-    else if (query.includes("app")) router.push("/For-professionals/app-development");
-
-    // For Research
-    else if (
-      query.includes("research") ||
-      query.includes("researcher") ||
-      query.includes("for research")
-    )
-      router.push("/For-researchers/technology-engineering");
-    else if (query.includes("writing")) router.push("/For-researchers/technical-writing");
-    else if (query.includes("counselling")) router.push("/For-researchers/carrer-counselling");
-
-    // For Students
-    else if (
-      query.includes("student") ||
-      query.includes("students") ||
-      query.includes("for student")
-    )
-      router.push("/For-students/special-education");
-    else if (query.includes("finance")) router.push("/For-students/comprehensive-finance");
-    else if (query.includes("proof")) router.push("/For-students/proof-reading");
-    else if (query.includes("school")) router.push("/For-students/school-subjects");
-
-    else if (query.includes("past")) router.push("/Past-work");
-    else if (query.includes("contact")) router.push("/Contact-Us");
-    else alert("Page not found!");
-
-    setIsSearchOpen(false);
-    setSearchQuery("");
+    if (results.length > 0) {
+      // Navigate to the best match
+      router.push(results[0].path);
+      setIsSearchOpen(false);
+      setSearchQuery("");
+    } else {
+      alert(`No results found for "${searchQuery}". Try searching for: home, leadership, interior design, website, app, research, finance, school, contact, etc.`);
+    }
   };
 
   return (

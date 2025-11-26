@@ -70,7 +70,7 @@ export default function InteriorDesign() {
       <HeroWithOverlay
         title="Architecture and Interior Design"
         subtitle="We offer specialized training in industry-standard design tools and techniques for students, freelance designers, and firms."
-        bg="/interior-design.jpg"
+        bg="/interior.jpg"
       />
       
       <ServiceWithListGrid sectionTitle="Services" services={services} />
